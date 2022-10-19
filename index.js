@@ -15,6 +15,7 @@ let alturaRet = 50;
 let larguraCanvas = 1024;
 let alturaCanvas = 512;
 
+
 function animacao() {
   requestAnimationFrame(animacao);
   c.clearRect(0, 0, larguraCanvas, alturaCanvas);
@@ -27,8 +28,6 @@ function animacao() {
   c.strokeRect(posicaoX, posicaoY, larguraRet, alturaRet)
 
 
-
-  
   
   posicaoX += direcaoX;
   posicaoY += direcaoY;

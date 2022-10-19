@@ -19,6 +19,17 @@
 **--------------------------------------------------------------------------------------**
 
 `c.arc()`
-##  
+## cria um arco (posicao eixo x, posicao eixo y, raio, angulo inicial, angulo final, sentido)
+## sentido true para horario false para anthorario
+## radianos para grau formula (PI/180)* angulo em grau
+## exemplo c.arc(100, 100, 100, (Math.PI/180)*0, (Math.PI/180)*90, false )
 
-  
+**---------------------------------------------------------------------------------------**
+
+`c.fill()`
+## somente fill para preenchimento
+
+`c.beginPath()`
+## reseta a ponta do canvas
+**---------------------------------------------------------------------------------------**
+
