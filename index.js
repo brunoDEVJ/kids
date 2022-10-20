@@ -3,51 +3,125 @@ const c = canvas.getContext("2d");
 
 canvas.width = 64 * 16; // 1024
 canvas.height = 64 * 8; // 512
-let posicaoX = 0;
-let posicaoY = 0;
 
-let direcaoX = 0;
-let direcaoY = 0;
-
-let larguraRet = 50;
-let alturaRet = 50;
 
 let larguraCanvas = 1024;
 let alturaCanvas = 512;
+
+let posicaoX = 0;
+let posicaoY = 0;
+
+let velocidade = 5
+
+const keyBoard = 
+{
+  cima:false,
+  baixo: false,
+  esquerda: false,
+  direita: false,
+  personagemEsquerda: false,
+}
+
+let personagemImagem = new Image();
+personagemImagem.src = './Link.jpg'
+let recorteInicial = 0;
+let larguraImagemTotal = personagemImagem.width;
+let numeroDeSprite = 3;
+let NumeroDeVomentoDoSprite = 4
+let larguraDoSprite = larguraImagemTotal/numeroDeSprite
+let alturaImagemTotal = personagemImagem.height
+let numeroDoSprite = larguraDoSprite * recorteInicial
+
+setInterval(() => {
+  
+  recorteInicial++
+  
+  if(recorteInicial >= numeroDeSprite){
+    recorteInicial = 1
+  }
+  
+  
+},100)
+
 
 
 function animacao() {
   requestAnimationFrame(animacao);
   c.clearRect(0, 0, larguraCanvas, alturaCanvas);
-
-  c.fillStyle = "#ccc";
-  c.fillRect(posicaoX, posicaoY, larguraRet, alturaRet);
-
-  c.lineWidth = 3
-  c.strokeStyle = '#F00'
-  c.strokeRect(posicaoX, posicaoY, larguraRet, alturaRet)
-
-
+  numeroDoSprite = larguraDoSprite * recorteInicial
   
-  posicaoX += direcaoX;
-  posicaoY += direcaoY;
-  
-  if (posicaoY <= 0) {
-    direcaoX = 2;
-    direcaoY = 0;
-  }
-  if (posicaoX + larguraRet >= larguraCanvas -1) {
-    direcaoX = 0;
-    direcaoY = 2;
-  }
+  c.drawImage(personagemImagem, numeroDoSprite, 0 , larguraDoSprite, alturaImagemTotal, posicaoX, posicaoY,larguraDoSprite,alturaImagemTotal )
 
-  if (posicaoY + alturaRet >= alturaCanvas) {
-    direcaoY = 0;
-    direcaoX = -2;
-  }
 
-  if (posicaoX < 1 && posicaoY + alturaRet >= alturaCanvas) {
-    direcaoX = 0;
-    direcaoY = -2;
+  if(keyBoard.direita){
+    posicaoX += velocidade
+  }
+  if(keyBoard.esquerda){
+    posicaoX -= velocidade
+  }
+  if(keyBoard.cima){
+    posicaoY -= velocidade
+  }
+  if(keyBoard.baixo){
+    posicaoY += velocidade
   }
 }
+
+
+
+
+
+addEventListener('keydown', ({key}) => {
+  switch (key) {
+    case 'd' :
+      keyBoard.direita = true
+      keyBoard.personagemEsquerda = false
+      personagemImagem.src = './runRight.png'
+      numeroDeSprite = 8
+      break;
+    case 'a' :
+      keyBoard.esquerda = true
+      keyBoard.personagemEsquerda = true
+      personagemImagem.src = './runLeft.png'
+      numeroDeSprite = 8
+      break;
+    case 'w' :
+      keyBoard.cima = true
+      personagemImagem.src = './enterDoor.png'
+      numeroDeSprite = 8
+      break;
+    case 's' :
+      keyBoard.baixo = true
+      keyBoard.personagemEsquerda ? personagemImagem.src = './runLeft.png' : personagemImagem.src = './runRight.png'
+      numeroDeSprite = 8
+      break;
+  }  
+})
+
+addEventListener('keyup', ({key}) => {
+  switch (key) {
+    case 'd' :
+      keyBoard.direita = false
+      keyBoard.personagemEsquerda = false
+      personagemImagem.src = './idle.png'
+      numeroDeSprite = 8
+      break;
+    case 'a' :
+      keyBoard.esquerda = false
+      keyBoard.personagemEsquerda = true
+      personagemImagem.src = './idleLeft.png'
+      numeroDeSprite = 8
+      break;
+    case 'w' :
+      keyBoard.cima = false
+      personagemImagem.src = './idle.png'
+      numeroDeSprite = 8
+      break;
+    case 's' :
+      keyBoard.baixo = false
+      personagemImagem.src = './idle.png'
+      numeroDeSprite = 8
+      break;
+  }  
+})
+

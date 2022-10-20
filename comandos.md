@@ -39,5 +39,5 @@
 `img.src = './img.png' `
 ## src local da imagem
 
-`c.drawImage(img, recorte inicial x , recorte inical y, recorte largura, recorte altura, posicao x da imagem, posicao y da imagem, largura da imagem, altura da imagem)`
+`c.drawImage(img, recorte inicial x , recorte inical y, recorte largura x, recorte altura y, posicao x da imagem, posicao y da imagem, largura da imagem, altura da imagem)`
 ## drawImage desenha a imagem, apos o load da imagem pode ser chamado de duas maneiras onload() => {drawImage()} || img.addEventListener('load', drawImage)
