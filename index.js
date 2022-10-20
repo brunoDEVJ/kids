@@ -23,10 +23,10 @@ const keyBoard =
 }
 
 let personagemImagem = new Image();
-personagemImagem.src = './Link.jpg'
+personagemImagem.src = './idle.png';
 let recorteInicial = 0;
 let larguraImagemTotal = personagemImagem.width;
-let numeroDeSprite = 3;
+let numeroDeSprite = 11;
 let NumeroDeVomentoDoSprite = 4
 let larguraDoSprite = larguraImagemTotal/numeroDeSprite
 let alturaImagemTotal = personagemImagem.height
@@ -39,18 +39,17 @@ setInterval(() => {
   if(recorteInicial >= numeroDeSprite){
     recorteInicial = 1
   }
-  
-  
 },100)
 
 
 
 function animacao() {
-  requestAnimationFrame(animacao);
+  window.requestAnimationFrame(animacao);
   c.clearRect(0, 0, larguraCanvas, alturaCanvas);
   numeroDoSprite = larguraDoSprite * recorteInicial
-  
+
   c.drawImage(personagemImagem, numeroDoSprite, 0 , larguraDoSprite, alturaImagemTotal, posicaoX, posicaoY,larguraDoSprite,alturaImagemTotal )
+  
 
 
   if(keyBoard.direita){
@@ -65,8 +64,9 @@ function animacao() {
   if(keyBoard.baixo){
     posicaoY += velocidade
   }
-}
 
+  
+}
 
 
 
@@ -125,3 +125,5 @@ addEventListener('keyup', ({key}) => {
   }  
 })
 
+
+animacao()
