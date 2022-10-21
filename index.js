@@ -23,7 +23,7 @@ const keyBoard =
 }
 
 let personagemImagem = new Image();
-personagemImagem.src = './idle.png';
+personagemImagem.src = './SpritePersonagem/idle.png';
 let recorteInicial = 0;
 let larguraImagemTotal = personagemImagem.width;
 let numeroDeSprite = 11;
@@ -76,23 +76,23 @@ addEventListener('keydown', ({key}) => {
     case 'd' :
       keyBoard.direita = true
       keyBoard.personagemEsquerda = false
-      personagemImagem.src = './runRight.png'
+      personagemImagem.src = './SpritePersonagem/runRight.png'
       numeroDeSprite = 8
       break;
     case 'a' :
       keyBoard.esquerda = true
       keyBoard.personagemEsquerda = true
-      personagemImagem.src = './runLeft.png'
+      personagemImagem.src = './SpritePersonagem/runLeft.png'
       numeroDeSprite = 8
       break;
     case 'w' :
       keyBoard.cima = true
-      personagemImagem.src = './enterDoor.png'
+      personagemImagem.src = './SpritePersonagem/enterDoor.png'
       numeroDeSprite = 8
       break;
     case 's' :
       keyBoard.baixo = true
-      keyBoard.personagemEsquerda ? personagemImagem.src = './runLeft.png' : personagemImagem.src = './runRight.png'
+      keyBoard.personagemEsquerda ? personagemImagem.src = './SpritePersonagem/runLeft.png' : personagemImagem.src = './SpritePersonagem/runRight.png'
       numeroDeSprite = 8
       break;
   }  
@@ -103,23 +103,23 @@ addEventListener('keyup', ({key}) => {
     case 'd' :
       keyBoard.direita = false
       keyBoard.personagemEsquerda = false
-      personagemImagem.src = './idle.png'
+      personagemImagem.src = './SpritePersonagem/idle.png'
       numeroDeSprite = 8
       break;
     case 'a' :
       keyBoard.esquerda = false
       keyBoard.personagemEsquerda = true
-      personagemImagem.src = './idleLeft.png'
+      personagemImagem.src = './SpritePersonagem/idleLeft.png'
       numeroDeSprite = 8
       break;
     case 'w' :
       keyBoard.cima = false
-      personagemImagem.src = './idle.png'
+      personagemImagem.src = './SpritePersonagem/idle.png'
       numeroDeSprite = 8
       break;
     case 's' :
       keyBoard.baixo = false
-      personagemImagem.src = './idle.png'
+      personagemImagem.src = './SpritePersonagem/idle.png'
       numeroDeSprite = 8
       break;
   }  
