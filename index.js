@@ -19,35 +19,14 @@ const keyBoard =
   cima:false,
   baixo: false,
   esquerda: false,
-  direita: false,
-  personagemEsquerda: false,
 }
 
-let personagemImagem = new Image();
-personagemImagem.src = './SpritePersonagem/idle.png';
-let recorteInicial = 0;
-let larguraImagemTotal = personagemImagem.width;
-let numeroDeSprite = 11;
-let NumeroDeVomentoDoSprite = 4
-let larguraDoSprite = larguraImagemTotal/numeroDeSprite
-let alturaImagemTotal = personagemImagem.height
-let numeroDoSprite = larguraDoSprite * recorteInicial
-
-setInterval(() => {
-  
-  recorteInicial++
-  
-  if(recorteInicial >= numeroDeSprite){
-    recorteInicial = 1
-  }
-},100)
-
+const jogador = new Jogador(c,teclado)
 
 
 function animacao() {
   window.requestAnimationFrame(animacao);
-  c.clearRect(0, 0, larguraCanvas, alturaCanvas);
-  numeroDoSprite = larguraDoSprite * recorteInicial
+  c.clearRect(0, 0, canvas.width, canvas.height)
 
   c.drawImage(personagemImagem, numeroDoSprite, 0 , larguraDoSprite, alturaImagemTotal, posicaoX, posicaoY,larguraDoSprite,alturaImagemTotal )
   
@@ -69,62 +48,5 @@ function animacao() {
   
 }
 
-
-
-
-addEventListener('keydown', ({key}) => {
-  switch (key) {
-    case 'd' :
-      keyBoard.direita = true
-      keyBoard.personagemEsquerda = false
-      personagemImagem.src = './SpritePersonagem/runRight.png'
-      numeroDeSprite = 8
-      break;
-    case 'a' :
-      keyBoard.esquerda = true
-      keyBoard.personagemEsquerda = true
-      personagemImagem.src = './SpritePersonagem/runLeft.png'
-      numeroDeSprite = 8
-      break;
-    case 'w' :
-      keyBoard.cima = true
-      personagemImagem.src = './SpritePersonagem/enterDoor.png'
-      numeroDeSprite = 8
-      break;
-    case 's' :
-      keyBoard.baixo = true
-      keyBoard.personagemEsquerda ? personagemImagem.src = './SpritePersonagem/runLeft.png' : personagemImagem.src = './SpritePersonagem/runRight.png'
-      numeroDeSprite = 8
-      break;
-  }  
-})
-
-addEventListener('keyup', ({key}) => {
-  switch (key) {
-    case 'd' :
-      keyBoard.direita = false
-      keyBoard.personagemEsquerda = false
-      personagemImagem.src = './SpritePersonagem/idle.png'
-      numeroDeSprite = 8
-      break;
-    case 'a' :
-      keyBoard.esquerda = false
-      keyBoard.personagemEsquerda = true
-      personagemImagem.src = './SpritePersonagem/idleLeft.png'
-      numeroDeSprite = 8
-      break;
-    case 'w' :
-      keyBoard.cima = false
-      personagemImagem.src = './SpritePersonagem/idle.png'
-      numeroDeSprite = 8
-      break;
-    case 's' :
-      keyBoard.baixo = false
-      personagemImagem.src = './SpritePersonagem/idle.png'
-      numeroDeSprite = 8
-      break;
-  }  
-})
-
-
 animacao()
+
