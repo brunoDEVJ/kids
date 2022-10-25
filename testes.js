@@ -1,44 +1,5 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.querySelector('.cv')
 
-canvas.width = 64 * 16; // 1024
-canvas.height = 64 * 8; // 512
+canvas.wid
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let px = 0
-
-// const div = document.querySelector('.div')
-
-// setInterval(() => {
-//     px++
-//     div.style.marginLeft = `${px}px`
-//     console.log(px)
-// }, 300);
